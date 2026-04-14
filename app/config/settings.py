@@ -16,7 +16,7 @@ class Settings(BaseSettings):
    # Defaults to 3072 (e.g. text-embedding-3-large). Override via .env if needed.
    AZURE_OPENAI_EMBEDDING_DIMENSIONS: int = 3072
    
-   QDRANT_URL: str
+   # QDRANT_URL: str
    
    AZURE_OPENAI_PROMPT_ENDPOINT: str
    AZURE_OPENAI_PROMPT_MODEL_NAME: str
