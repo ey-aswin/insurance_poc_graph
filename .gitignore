@@ -1,0 +1,21 @@
+.env
+.venv
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+*.pyo
+# Local settings file (not checked in
+pipelines/*
+pipelines
+.pipelines
+.myenv
+# Remove the Folder pipelines
+pipelines/
+pipelines/*
+pipelines/**/*
+pipelines/**/**/*
+pipelines/**/**/**/*
+pipelines
+.ipynb_checkpoints
+.ipynb
+*.ipynb
