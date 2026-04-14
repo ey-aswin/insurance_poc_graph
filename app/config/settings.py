@@ -63,7 +63,12 @@ class Settings(BaseSettings):
    COSMOS_CHAT_MESSAGES_CONTAINER: str = "chat_messages"
    
    
-   model_config = SettingsConfigDict(env_file=".env")
+   
+   model_config = SettingsConfigDict(
+        env_file=".env",     # local only
+        case_sensitive=True # Azure Linux is case-sensitive
+    )
+
 
 
 settings = Settings()
