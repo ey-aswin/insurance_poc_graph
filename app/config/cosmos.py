@@ -87,6 +87,36 @@ class CosmosDB:
             return None
         except exceptions.CosmosHttpResponseError as e:
             raise Exception(f"Failed to read item from Cosmos DB: {str(e)}")
+        
+    
+    def read_item_by_other_key(self, key_name: str,key_value: str):
+        query = f"SELECT * FROM c WHERE c.{key_name} = @{key_name}"
+        print(f"Executing query: {query} with value: {key_value}")
+
+        items = list(self.container.query_items(
+            query=query,
+            parameters=[
+                {"name": f"@{key_name}", "value": key_value}
+            ],
+            enable_cross_partition_query=True
+        ))
+
+        return items
+
+    #  i need to return only one item if there are multiple items matching the query, how can i do that?
+    def read_one_item_by_other_key(self, key_name: str,key_value: str):
+        query = f"SELECT * FROM c WHERE c.{key_name} = @{key_name} OFFSET 0 LIMIT 1"
+        print(f"Executing query: {query} with value: {key_value}")
+        items = list(self.container.query_items(
+            query=query,
+            parameters=[
+                {"name": f"@{key_name}", "value": key_value}
+            ],
+            enable_cross_partition_query=True
+        ))
+        return items[0] if items else None
+
+
     
     def read_all_items(self):
         try:

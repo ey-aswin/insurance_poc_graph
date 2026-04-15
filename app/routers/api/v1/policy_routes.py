@@ -4,7 +4,7 @@ from app.controllers.policy_controller import policy_controller
 
 router = APIRouter(prefix="/api/v1/policy", tags=["policy"])
 
-@router.get("/{policy_id}")
+@router.post("/info")
 async def get_policy(policy_id: str):
     try:
         policy_data = policy_controller.get_policy_details(policy_id)
